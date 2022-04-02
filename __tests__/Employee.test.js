@@ -1,3 +1,4 @@
+// Tests for Employee class
 const Employee = require('../lib/Employee.js');
 
 test("creates an employee object", () => {

@@ -1,3 +1,4 @@
+// Generates the profile stub for the team manager using information from inquirer as a parameter
 const generateTeamManager = (managerInfo) => {
     return `
       <section class="my-3" id="portfolio">
@@ -16,10 +17,12 @@ const generateTeamManager = (managerInfo) => {
     `;
 };
 
+// Generates the profile stub(s) for engineers using information from inquirer as a parameter
 const generateEngineer = (engineersArray) => {
     if (!engineersArray) {
         return "";
     }
+    
     return `
       <section class="my-3" id="portfolio">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Engineer</h2>
@@ -41,6 +44,7 @@ const generateEngineer = (engineersArray) => {
     `;
 };
 
+// Generates the profile stub(s) for interns using information from inquirer as a parameter
 const generateIntern = (internsArray) => {
     if (!internsArray) {
         return "";

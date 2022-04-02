@@ -1,20 +1,14 @@
-const generateTeamManager = teamManager => {
+const generateTeamManager = managerInfo => {
     return `
       <section class="my-3" id="portfolio">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Team Manager</h2>
         <div class="flex-row justify-space-between">
-        ${teamManager
-          .map(({ name, id, email, officeNumber }) => {
-            return `
             <div class="col-12 mb-2 bg-dark text-light p-3">
-              <h3 class="portfolio-item-title text-light">${name}</h3>
-              <p>ID: ${id}</p>
-              <p>Email: <a href="mailto:${email}">${email}</a></p>
-              <p>Office #: ${officeNumber}</p>
+              <h3 class="portfolio-item-title text-light">${managerInfo.name}</h3>
+              <p>ID: ${managerInfo.id}</p>
+              <p>Email: <a href="mailto:${managerInfo.email}">${managerInfo.email}</a></p>
+              <p>Office #: ${managerInfo.officeNumber}</p>
             </div>
-          `;
-          })
-          }
         </div>
       </section>
     `;
@@ -65,7 +59,7 @@ const generateTeamManager = teamManager => {
   }
   
   // export function to generate entire page
-  module.exports = templateData => {
+  module.exports = (templateData) => {
     // destructure page data by section
     const { manager, engineers, interns } = templateData;
   

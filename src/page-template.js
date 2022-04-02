@@ -1,10 +1,12 @@
-const generateTeamManager = managerInfo => {
+const generateTeamManager = (managerInfo) => {
     return `
       <section class="my-3" id="portfolio">
-        <h2 class="text-dark bg-primary p-2 display-inline-block">Team Manager</h2>
+        <h2 class="text-dark bg-primary p-2 display-inline-block">${managerInfo.getRole()}</h2>
         <div class="flex-row justify-space-between">
             <div class="col-12 mb-2 bg-dark text-light p-3">
-              <h3 class="portfolio-item-title text-light">${managerInfo.name}</h3>
+              <h3 class="portfolio-item-title text-light">${
+                  managerInfo.name
+              }</h3>
               <p>ID: ${managerInfo.id}</p>
               <p>Email: <a href="mailto:${managerInfo.email}">${managerInfo.email}</a></p>
               <p>Office #: ${managerInfo.officeNumber}</p>
@@ -12,16 +14,19 @@ const generateTeamManager = managerInfo => {
         </div>
       </section>
     `;
-  };
+};
 
-  const generateEngineer = engineersArray => {
+const generateEngineer = (engineersArray) => {
+    if (!engineersArray) {
+        return "";
+    }
     return `
       <section class="my-3" id="portfolio">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Engineer</h2>
         <div class="flex-row justify-space-between">
         ${engineersArray
-          .map(({ name, id, email, github }) => {
-            return `
+            .map(({ name, id, email, github }) => {
+                return `
             <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3">
               <h3 class="portfolio-item-title text-light">${name}</h3>
               <p>ID: ${id}</p>
@@ -29,21 +34,25 @@ const generateTeamManager = managerInfo => {
               <p>GitHub: <a href="https://github.com/${github}">${github}</a></p>
             </div>
           `;
-          })
-          .join('')}
+            })
+            .join('')}
         </div>
       </section>
     `;
-  }
+};
 
-  const generateIntern = internsArray => {
+const generateIntern = (internsArray) => {
+    if (!internsArray) {
+        return "";
+    }
+
     return `
       <section class="my-3" id="portfolio">
         <h2 class="text-dark bg-primary p-2 display-inline-block">Intern</h2>
         <div class="flex-row justify-space-between">
         ${internsArray
-          .map(({ name, id, email, school }) => {
-            return `
+            .map(({ name, id, email, school }) => {
+                return `
             <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3">
               <h3 class="portfolio-item-title text-light">${name}</h3>
               <p>ID: ${id}</p>
@@ -51,18 +60,15 @@ const generateTeamManager = managerInfo => {
               <p>School: ${school}</p>
             </div>
           `;
-          })
-          .join('')}
+            })
+            .join('')}
         </div>
       </section>
     `;
-  }
-  
-  // export function to generate entire page
-  module.exports = (templateData) => {
-    // destructure page data by section
-    const { manager, engineers, interns } = templateData;
-  
+};
+
+// Export function to generate entire page
+module.exports = (manager, engineers, interns) => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -94,5 +100,4 @@ const generateTeamManager = managerInfo => {
     </body>
     </html>
     `;
-  };
-  
+};
